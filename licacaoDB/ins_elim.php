@@ -12,7 +12,7 @@
 		// Exercício: crie um método de confirmação da intenção de apagar um registo
 		$query = "DELETE FROM classicos_lit WHERE isbn='$isbn'";
 		$result = $ligacao->query($query);
-		if(!result) echo "Falha ao eliminar registo<br><br>";
+		if(!$result) echo "Falha ao eliminar registo<br><br>";
 	}
 	if (isset($_POST['autor']) &&
 	isset($_POST['titulo']) &&
