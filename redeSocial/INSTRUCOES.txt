@@ -1,0 +1,9 @@
+A aplicação gpsi20 será criada na seguinte ordem: funcoes, header, setup, index, signup, checkuser, login, perfil, membros, amigos, mensagens, logout, todos em php
+
+1 - Aceda a phpmyadmin e crie a BD 
+CREATE DATABASE gpsi20;
+
+2 - Atribua privilégios
+GRANT ALL ON gpsi19.* TO 'jdelgado'@'localhost' IDENTIFIED BY 'password123';
+
+3 - Copie os ficheiros javascript e css para a pasta htdocs / www.
