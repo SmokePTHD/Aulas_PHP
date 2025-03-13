@@ -1,9 +1,8 @@
 <?php // header.php
   session_start();
-// folhas de estilo e javascript 
 echo <<<_INIT
 <!DOCTYPE html> 
-<html>
+<html lang='pt'>
   <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
@@ -28,7 +27,7 @@ echo <<<_MAIN
   <body>
     <div data-role='page'> <!-- isto é jquery -->
       <div data-role='header'>
-        <div id='logo' class='center'><img id='gpsi20' src='gpsi20.gif'>gpsi22</div>
+        <div id='logo' class='center'><img id='gpsi20' src='images/gpsi20.gif'>GPSI22</div>
         <div class='username'>$userstr</div>
       </div>
       <div data-role='content'>

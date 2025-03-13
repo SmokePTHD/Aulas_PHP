@@ -1,26 +1,42 @@
 <?php // login.php
+  session_start();
   require_once 'header.php';
+  require_once 'database.php';
   $error = $utilizador = $password = "";
+  
   if (isset($_POST['utilizador']))
   {
     $utilizador = ($_POST['utilizador']);
     $password = ($_POST['password']);
+
     if ($utilizador == "" || $password == "")
       $error = 'Não estão preenchidos todos os campos.';
     else
     {
-      $result = queryMySQL("SELECT utilizador,password FROM membros WHERE utilizador='$utilizador' AND password='$password'");
-      if ($result->num_rows == 0)
+      $smtp = $ligacao->prepare('SELECT utilizador, password FROM membros WHERE utilizador=?');
+      $smtp->bind_param('s', $utilizador);
+      $smtp->execute();
+      $smtp->store_result();
+      $smtp->bind_result($db_utilizador, $db_password);
+      $smtp->fetch();
+
+      if ($smtp->num_rows == 0)
       {
         $error = "Login inválido";
       }
       else
       {
-        $_SESSION['utilizador'] = $utilizador;
-        $_SESSION['password'] = $password;
-        die("<div class='center'>Você não está ligado. Por favor
-             <a data-transition='slide' href='membros.php?view=$utilizador'>clique aqui</a>
-             para continuar.</div></div>");
+        if (password_verify($password, $db_password))
+        {
+          $_SESSION['utilizador'] = $utilizador;
+          $_SESSION['password'] = $password;
+
+          header("Location: membros.php?view=$utilizador");
+        }
+        else
+        {
+          $error = "Login inválido";
+        }
       }
     }
   }

@@ -1,10 +1,6 @@
 <?php // funcoes.php
-  $dbhost  = 'localhost';    
-  $dbname  = 'gpsi22';   
-  $dbuser  = 'goncalo123';   
-  $dbpass  = 'password1234';   
-  $ligacao = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
-  if ($ligacao->connect_error) die("Erro fatal na ligação!");
+  require_once 'database.php';
+  
 // função para criar tabela; atenção ainda não vai criar tabela
   function createTable($nome, $query)
   {
